@@ -115,10 +115,16 @@ app.get('/api/status', (req, res) => {
     });
 });
 
+// ===== ENDPOINT PENTRU UPTIME ROBOT =====
+app.get('/ping', (req, res) => {
+    res.status(200).send('OK');
+});
+
 refreshSession();
 setInterval(refreshSession, 25 * 60 * 1000);
 
 app.listen(process.env.PORT || 3000, () => {
     console.log(`🚀 Server rulând pe port ${process.env.PORT || 3000}`);
     console.log(`📋 Sesiune activă: ${sessionCookie ? 'da' : 'nu'}`);
+    console.log(`📌 Ping endpoint: /ping`);
 });
