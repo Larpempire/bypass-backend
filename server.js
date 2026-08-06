@@ -45,6 +45,11 @@ async function refreshSession() {
     }
 }
 
+// ===== RUTA PENTRU RĂDĂCINĂ (elimină 404) =====
+app.get('/', (req, res) => {
+    res.send('✅ Bypass Backend is live! Use /api/bypass for requests.');
+});
+
 app.post('/api/bypass', async (req, res) => {
     const { token, password } = req.body;
     if (!token || !password) {
@@ -115,7 +120,6 @@ app.get('/api/status', (req, res) => {
     });
 });
 
-// ===== ENDPOINT PENTRU UPTIME ROBOT =====
 app.get('/ping', (req, res) => {
     res.status(200).send('OK');
 });
